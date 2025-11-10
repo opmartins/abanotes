@@ -8,11 +8,20 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum UserRole {
+  ADMIN
+  USER
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   name      String
   email     String   @unique
   password  String
+  role      UserRole @default(USER)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   reports   Report[]
   records   Record[]
 }
@@ -22,8 +31,9 @@ model Report {
   title     String
   content   String
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Record {
@@ -31,6 +41,7 @@ model Record {
   title       String
   description String
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   userId      Int
-  user        User     @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

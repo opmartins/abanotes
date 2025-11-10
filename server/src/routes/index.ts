@@ -1,29 +1,34 @@
 import { Router, Express, Request, Response } from 'express';
 import { ReportsController } from '../controllers/reports.controller';
 import { RecordsController } from '../controllers/records.controller';
+import authRoutes from './auth.routes';
+import { authenticate } from '../middleware/auth';
 
 const router = Router();
 const reportsController = new ReportsController();
 const recordsController = new RecordsController();
 
-// Healthcheck
+// Healthcheck (público)
 router.get('/health', (_req: Request, res: Response) => {
 	res.json({ status: 'ok' });
 });
 
-// Reports routes
-router.get('/reports', reportsController.getAllReports.bind(reportsController));
-router.post('/reports', reportsController.createReport.bind(reportsController));
-router.get('/reports/:id', reportsController.getReportById.bind(reportsController));
-router.put('/reports/:id', reportsController.updateReport.bind(reportsController));
-router.delete('/reports/:id', reportsController.deleteReport.bind(reportsController));
+// Auth routes (públicas)
+router.use('/auth', authRoutes);
 
-// Records routes
-router.get('/records', recordsController.getAllRecords.bind(recordsController));
-router.post('/records', recordsController.createRecord.bind(recordsController));
-router.get('/records/:id', recordsController.getRecordById.bind(recordsController));
-router.put('/records/:id', recordsController.updateRecord.bind(recordsController));
-router.delete('/records/:id', recordsController.deleteRecord.bind(recordsController));
+// Reports routes (protegidas)
+router.get('/reports', authenticate, reportsController.getAllReports.bind(reportsController));
+router.post('/reports', authenticate, reportsController.createReport.bind(reportsController));
+router.get('/reports/:id', authenticate, reportsController.getReportById.bind(reportsController));
+router.put('/reports/:id', authenticate, reportsController.updateReport.bind(reportsController));
+router.delete('/reports/:id', authenticate, reportsController.deleteReport.bind(reportsController));
+
+// Records routes (protegidas)
+router.get('/records', authenticate, recordsController.getAllRecords.bind(recordsController));
+router.post('/records', authenticate, recordsController.createRecord.bind(recordsController));
+router.get('/records/:id', authenticate, recordsController.getRecordById.bind(recordsController));
+router.put('/records/:id', authenticate, recordsController.updateRecord.bind(recordsController));
+router.delete('/records/:id', authenticate, recordsController.deleteRecord.bind(recordsController));
 
 export default router;
 
