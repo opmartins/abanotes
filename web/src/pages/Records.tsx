@@ -1,3 +1,4 @@
+import { api } from '@/lib/api';
 import React, { useEffect, useState } from 'react';
 import Card from '../components/ui/Card';
 import Table from '../components/ui/Table';
@@ -14,9 +15,7 @@ const Records: React.FC = () => {
     useEffect(() => {
         const fetchRecords = async () => {
             try {
-                const res = await fetch('/api/records');
-                if (!res.ok) throw new Error('Falha ao carregar prontuários');
-                const data = await res.json();
+                const data = await api.get<RecordItem[]>('/records');
                 setRecords(data);
             } catch (e:any) { setError(e.message); } finally { setLoading(false); }
         };

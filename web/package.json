@@ -1,6 +1,7 @@
 {
-  "name": "clinica-autismo-app",
+  "name": "abanotes-web",
   "version": "1.0.0",
+  "description": "ABA Notes - Frontend application for managing ABA therapy records",
   "private": true,
   "scripts": {
     "dev": "vite",

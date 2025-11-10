@@ -1,7 +1,33 @@
-# Clinica Autismo App
+# ABA Notes 📝
 
-## Descrição
-Esta é uma aplicação web desenvolvida para uma clínica que atende crianças autistas. O sistema permite o armazenamento de relatórios e prontuários, facilitando o gerenciamento de informações importantes para o atendimento.
+<div align="center">
+  <img src="web/public/favicon.svg" alt="ABA Notes Logo" width="120" height="120" />
+  <h3>Sistema de Gerenciamento de Prontuários ABA</h3>
+  <p>Plataforma moderna para clínicas de terapia ABA (Applied Behavior Analysis)</p>
+</div>
+
+---
+
+## 📋 Descrição
+
+**ABA Notes** é uma aplicação web moderna desenvolvida para clínicas de terapia ABA (Applied Behavior Analysis). O sistema permite o armazenamento e gerenciamento eficiente de relatórios e prontuários, facilitando o acompanhamento do desenvolvimento de crianças em terapia comportamental.
+
+### ✨ Funcionalidades
+
+- 📊 **Dashboard**: Visão geral com métricas e estatísticas
+- 📈 **Relatórios**: Geração e visualização de relatórios de progresso
+- 📋 **Prontuários**: Gerenciamento completo de registros de pacientes
+- 🔐 **Autenticação**: Sistema seguro de login e autorização
+- 📱 **Responsivo**: Interface adaptável para desktop, tablet e mobile
+- 🌙 **Dark Mode**: Suporte automático para modo escuro
+
+## 🎨 Identidade Visual
+
+- **Cores**: Indigo (#4F46E5) e Teal (#14B8A6)
+- **Logo**: Nota com gradiente moderno
+- **Design**: Limpo, profissional e acessível
+
+Veja mais detalhes em [BRAND.md](BRAND.md)
 
 ## Tecnologias Utilizadas
 - **Backend**: Node.js com Express
@@ -16,8 +42,8 @@ Esta é uma aplicação web desenvolvida para uma clínica que atende crianças 
 
 ## Estrutura do Projeto
 ```
-clinica-autismo-app
-├── server                # Código do servidor
+abanotes
+├── server                # Código do servidor (API REST)
 │   ├── src              # Código-fonte
 │   ├── prisma           # Configuração do Prisma
 │   ├── tests            # Testes unitários
@@ -48,8 +74,10 @@ clinica-autismo-app
 ```
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
-POSTGRES_DB=clinica_autismo
-DATABASE_URL=postgresql://postgres:postgres@db:5432/clinica_autismo?schema=public
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=abanotes
+DATABASE_URL=postgresql://postgres:postgres@db:5432/abanotes?schema=public
 JWT_SECRET=local-dev-secret
 ```
 

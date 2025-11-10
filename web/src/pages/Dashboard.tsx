@@ -13,8 +13,8 @@ const Dashboard: React.FC = () => {
     return (
         <div className="content">
             <div>
-                <h1 style={{marginTop:0}}>Visão Geral</h1>
-                <p className="muted">Acompanhe indicadores principais da clínica.</p>
+                <h1 style={{marginTop:0}}>📊 Visão Geral</h1>
+                <p className="muted">Acompanhe os indicadores principais da sua prática ABA.</p>
             </div>
             <section className="grid cols-3">
                 {stats.map(s => (

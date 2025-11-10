@@ -1,0 +1,43 @@
+# Git files
+.git
+.gitignore
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# Build files
+dist/
+build/
+
+# Environment files
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Tests
+tests/
+*.test.ts
+*.spec.ts
+coverage/
+
+# CI/CD
+.github/
+
+# Documentation
+README.md
+*.md
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Terraform
+infra/
+
+# Development scripts
+scripts/

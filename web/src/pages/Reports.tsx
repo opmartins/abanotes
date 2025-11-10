@@ -1,3 +1,4 @@
+import { api } from '@/lib/api';
 import React, { useEffect, useState } from 'react';
 import Table from '../components/ui/Table';
 import Card from '../components/ui/Card';
@@ -14,9 +15,7 @@ const Reports: React.FC = () => {
     useEffect(() => {
         const fetchReports = async () => {
             try {
-                const res = await fetch('/api/reports');
-                if (!res.ok) throw new Error('Falha ao carregar relatórios');
-                const data = await res.json();
+                const data = await api.get<Report[]>('/reports');
                 setReports(data);
             } catch (e:any) {
                 setError(e.message);

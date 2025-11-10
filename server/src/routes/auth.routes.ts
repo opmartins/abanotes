@@ -8,6 +8,11 @@ const router = Router();
 const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || 'your_secret_key';
 
+// Optional: explicit GET handler to clarify correct method
+router.get('/login', (_req, res) => {
+    res.status(405).json({ message: 'Use POST /api/auth/login with { email, password }' });
+});
+
 // Login
 router.post('/login', async (req, res) => {
     try {
