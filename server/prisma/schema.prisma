@@ -24,6 +24,7 @@ model User {
   updatedAt DateTime @updatedAt
   reports   Report[]
   records   Record[]
+  resetTokens PasswordResetToken[]
 }
 
 model Report {
@@ -44,4 +45,17 @@ model Record {
   updatedAt   DateTime @updatedAt
   userId      Int
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model PasswordResetToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([userId])
 }
